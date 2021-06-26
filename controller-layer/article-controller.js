@@ -2,7 +2,7 @@ const express = require("express");
 const verifyLoggedIn = require("../middleware/verify-logged-in");
 const errorsHelper = require("../helpers/errors-helper");
 const articleLogic = require("../business-logic-layer/article-logic");
-
+const path = require("path");
 const router = express.Router();
 
 
@@ -34,7 +34,7 @@ router.get("/articleImages/:imageName", (request, response) => {
         const absolutePath = path.join(__dirname, "..", "upload/article-images", imageName);
         response.sendFile(absolutePath);
     } catch (error) {
-        response.status(500).send(errorsHelper.getError(err));
+        response.status(500).send(errorsHelper.getError(error));
     }
 })
 

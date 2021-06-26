@@ -5,27 +5,21 @@ const FlightSchema = mongoose.Schema({
         type: String,
         required: [true, "Missing From Location."],
         minLength: [2, "From Location must be minimum 2 chars."],
-        maxLength: [30, "From Location can't exceed 30 chars."],
+        maxLength: [50, "From Location can't exceed 50 chars."],
     },
     toLocation: {
         type: String,
         required: [true, "Missing To Location."],
         minLength: [2, "To Location must be minimum 2 chars."],
-        maxLength: [30, "To Location can't exceed 30 chars."],
+        maxLength: [50, "To Location can't exceed 50 chars."],
     },
-    description: {
+    duration: {
         type: String,
-        required: [true, "Missing Description."],
-        minLength: [5, "Description must be minimum 5 chars."],
-        maxLength: [500, "Description can't exceed 500 chars."],
+        required: [true, "Missing duration."],
+        min: [1, "duration must be minimum 1 hour."],
+        max: [30, "duration maximum is 30 hours."],
     },
-    hours: {
-        type: Number,
-        required: [true, "Missing number of hours."],
-        min: [1, "Hours must be minimum 1 hour."],
-        max: [30, "Hours maximum is 30 hours."],
-    },
-    flightDate: {
+    date: {
         type: Date,
         required: [true, "Missing flight date."],
     },

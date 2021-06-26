@@ -28,7 +28,7 @@ function verifyAdmin(request, response, next) {
             return response.status(401).send("You are not logged-in!");
         }
 
-        if (payload.user[0].role !== "Admin-Role") {
+        if (payload.user[0].role !== "Admin_Role") {
             return response.status(403).send("You are not admin!");
         }
 

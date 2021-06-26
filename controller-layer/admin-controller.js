@@ -3,6 +3,7 @@ const adminLogic = require("../business-logic-layer/admin-logic");
 const verifyAdmin = require("../middleware/verify-admin");
 const ArticleModel = require("../models/article-model");
 const FlightModel = require("../models/flight-model");
+const errorsHelper = require("../helpers/errors-helper");
 const router = express.Router();
 
 //add article admin only
@@ -10,9 +11,8 @@ router.post("/add-article", verifyAdmin, async (request, response) => {
     try {
         const article = new ArticleModel(request.body);
         const errors = article.validateSync();
-        if (errors)
-            return response.status(400).send(errors.message);
-
+        if (errors) return response.status(400).send(errors.message);
+        if (!request.files.newImage) return response.status(400).send("Image required!");
         const addedArticle = await adminLogic.addNewArticleAsync(article, request.files.newImage);
         response.status(201).json(addedArticle);
     }
@@ -41,9 +41,8 @@ router.post("/add-flight", verifyAdmin, async (request, response) => {
     try {
         const flight = new FlightModel(request.body);
         const errors = flight.validateSync();
-        if (errors)
-            return response.status(400).send(errors.message);
-
+        if (errors) return response.status(400).send(errors.message);
+        if (!request.files.newImage) return response.status(400).send("Image required!");
         const addedFlight = await adminLogic.addNewFlightAsync(flight, request.files.newImage);
         response.status(201).json(addedFlight);
     }

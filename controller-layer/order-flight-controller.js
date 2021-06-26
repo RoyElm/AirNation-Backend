@@ -3,6 +3,7 @@ const orderFlightLogic = require("../business-logic-layer/order-flight-logic");
 const errorsHelper = require("../helpers/errors-helper");
 const verifyLoggedIn = require("../middleware/verify-logged-in");
 const FlightModel = require("../models/flight-model");
+const OrderFlightModel = require("../models/order-flight-model");
 
 const router = express.Router();
 
@@ -19,11 +20,11 @@ router.get("/", verifyLoggedIn, async (request, response) => {
 //getting all ordered flights;
 router.post("/", verifyLoggedIn, async (request, response) => {
     try {
-        const flight = new FlightModel(request.body);
-        const error = flight.validateSync();
+        const orderFlight = new OrderFlightModel(request.body);
+        const error = orderFlight.validateSync();
         if (error) return response.status(400).send(error.message);
-        const addedFlight = await orderFlightLogic.saveOrderFlightAsync(flight);
-        response.status(201).json(addedFlight);
+        const addedOrderFlight = await orderFlightLogic.saveOrderFlightAsync(orderFlight);
+        response.status(201).json(addedOrderFlight);
     } catch (err) {
         response.status(500).send(errorsHelper.getError(err));
     }

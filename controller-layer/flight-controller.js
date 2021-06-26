@@ -2,7 +2,9 @@ const express = require("express");
 const flightLogic = require("../business-logic-layer/flight-logic");
 const verifyLoggedIn = require("../middleware/verify-logged-in");
 const router = express.Router();
+const errorsHelper = require("../helpers/errors-helper");
 const searchFlightModel = require("../models/search-flight-model");
+const path = require("path");
 
 //getting all flights;
 router.get("/", async (request, response) => {
@@ -54,7 +56,7 @@ router.get("/flightImages/:imageName", (request, response) => {
         const absolutePath = path.join(__dirname, "..", "upload/flight-images", imageName);
         response.sendFile(absolutePath);
     } catch (error) {
-        response.status(500).send(errorsHelper.getError(err));
+        response.status(500).send(errorsHelper.getError(error));
     }
 })
 
