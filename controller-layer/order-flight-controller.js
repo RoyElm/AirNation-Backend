@@ -2,7 +2,6 @@ const express = require("express");
 const orderFlightLogic = require("../business-logic-layer/order-flight-logic");
 const errorsHelper = require("../helpers/errors-helper");
 const verifyLoggedIn = require("../middleware/verify-logged-in");
-const FlightModel = require("../models/flight-model");
 const OrderFlightModel = require("../models/order-flight-model");
 
 const router = express.Router();
