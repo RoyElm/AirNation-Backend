@@ -31,7 +31,7 @@ router.get("/:_id", verifyLoggedIn, async (request, response) => {
 router.get("/articleImages/:imageName", (request, response) => {
     try {
         const imageName = request.params.imageName;
-        const absolutePath = "../upload/article-images/" + imageName;
+        const absolutePath = __dirname + "../upload/article-images/" + imageName;
         response.sendFile(absolutePath);
     } catch (error) {
         response.status(500).send(errorsHelper.getError(error));
