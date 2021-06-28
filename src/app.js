@@ -34,7 +34,8 @@ server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
     const absolutePath = path.join(__dirname, "..", "dist/index.html");
-    response.json(absolutePath);
+    const exist = fs.existsSync(absolutePath);
+    response.json({ absolutePath, exist });
 });
 
 module.exports = server;
