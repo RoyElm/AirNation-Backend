@@ -21,13 +21,5 @@
         "netlify-lambda": "^2.0.10",
         "serverless-http": "^2.7.0",
         "uuid": "^8.3.2"
-    },
-    "proxy": {
-        "/.netlify/functions": {
-            "target": "http://localhost:9000",
-            "pathRewrite": {
-                "^/\\.netlify/functions": ""
-            }
-        }
     }
 }
