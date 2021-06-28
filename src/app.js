@@ -18,6 +18,9 @@ server.use(bodyParser.json());
 server.use(cors())
 server.use(express.json());
 server.use(fileUpload());
+
+server.use(express.static(path.join(__dirname, "../dist")));
+
 // //ExpressJS Routes to controllers.
 server.use("/.netlify/functions/app/api/auth", authController);
 server.use("/.netlify/functions/app/api/admin", adminController);
@@ -26,7 +29,7 @@ server.use("/.netlify/functions/app/api/flight", flightController);
 server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    response.sendFile(path.join(__dirname, '../index.html'))
+    response.sendFile(path.join(__dirname, '../dist/index.html'))
 });
 
 // // //listening to environment Port on production or 3001 on developing;
