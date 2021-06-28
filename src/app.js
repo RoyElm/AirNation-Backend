@@ -10,13 +10,14 @@ const fileUpload = require("express-fileupload");
 const server = express();
 const serverless = require("serverless-http");
 const path = require("path");
+const bodyParser = require('body-parser');
 // // Enable sending an receiving cookies from the front:
 
 // //Enabling cors to access from all ip address, allowing json as response and allowing file uploading.
+server.use(bodyParser.json());
 server.use(cors())
 server.use(express.json());
 server.use(fileUpload());
-
 // //ExpressJS Routes to controllers.
 server.use("/api/auth", authController);
 server.use("/api/admin", adminController);
@@ -31,5 +32,5 @@ server.use("*", (request, response) => {
 // // //listening to environment Port on production or 3001 on developing;
 // const port = process.env.PORT || 3001;
 // server.listen(port, () => console.log("Listening...."));
-
+module.exports = server;
 module.exports.handler = serverless(server);
