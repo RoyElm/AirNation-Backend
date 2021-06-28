@@ -13,7 +13,7 @@ router.post("/register", async (request, response) => {
         const error = newUser.validateSync();
         if (error) return response.status(400).send(error.message);
         const addedUser = await authLogic.registerAsync(newUser);
-        if (addedUser?.status) return response.status(401).send(addedUser.error + " Already exist please try another");
+        // if (addedUser?.status) return response.status(401).send(addedUser.error + " Already exist please try another");
         response.status(201).json(addedUser);
     }
     catch (err) {
