@@ -24,7 +24,7 @@ server.use("/api/flight", flightController);
 server.use("/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    response.sendFile(path.join(__dirname, "./dist/index.html"))
+    response.sendFile(path.join(__dirname, ".index.html"))
 });
 
 server.listen(3001, () => console.log("Listening...."));
