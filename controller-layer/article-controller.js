@@ -31,7 +31,7 @@ router.get("/:_id", verifyLoggedIn, async (request, response) => {
 router.get("/articleImages/:imageName", (request, response) => {
     try {
         const imageName = request.params.imageName;
-        console.log(__dirname);
+        console.log("../upload/article-images/" + imageName);
         const absolutePath = path.join(__dirname, "..", "upload/article-images", imageName);
         response.sendFile(absolutePath);
     } catch (error) {
