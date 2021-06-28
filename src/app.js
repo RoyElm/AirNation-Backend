@@ -19,11 +19,11 @@ server.use(cors())
 server.use(express.json());
 server.use(fileUpload());
 // //ExpressJS Routes to controllers.
-server.use("/api/auth", authController);
-server.use("/api/admin", adminController);
-server.use("/api/article", articleController);
-server.use("/api/flight", flightController);
-server.use("/api/order-flight", orderFlightController);
+server.use("/.netlify/functions/app/api/auth", authController);
+server.use("/.netlify/functions/app/api/admin", adminController);
+server.use("/.netlify/functions/app/api/article", articleController);
+server.use("/.netlify/functions/app/api/flight", flightController);
+server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
     response.sendFile(path.join(__dirname, '../index.html'))
