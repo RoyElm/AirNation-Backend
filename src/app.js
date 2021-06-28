@@ -17,7 +17,7 @@ const fs = require("fs");
 // // Enable sending an receiving cookies from the front:
 server.use(cookieParser());
 
-server.use(express.static(path.join(`${__dirname}./dist`)));
+server.use(express.static(path.join(__dirname, "./dist")));
 
 // //Enabling cors to access from all ip address, allowing json as response and allowing file uploading.
 server.use(bodyParser.json());
@@ -33,7 +33,7 @@ server.use("/.netlify/functions/app/api/flight", flightController);
 server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    const absolutePath = path.join(`${__dirname}./dist/index.html`);
+    const absolutePath = path.join(__dirname, "./dist/index.html");
     response.json(absolutePath);
 });
 
