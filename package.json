@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "./node_modules/.bin/netlify-lamb",
+    "build": ""
   },
   "author": "Roy Elmakies",
   "license": "ISC",
