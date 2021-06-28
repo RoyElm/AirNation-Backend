@@ -12,6 +12,7 @@ const serverless = require("serverless-http");
 const path = require("path");
 const bodyParser = require('body-parser');
 const cookieParser = require("cookie-parser");
+const fs = require("fs");
 
 // // Enable sending an receiving cookies from the front:
 server.use(cookieParser());
@@ -32,7 +33,9 @@ server.use("/.netlify/functions/app/api/flight", flightController);
 server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    response.sendFile(path.join(`${__dirname}./dist/index.html`))
+    const absolutePath = path.join(`${__dirname}./dist/index.html`);
+    const stat = fs.existsSync(absolutePath);
+    response.json(stat);
 });
 
 module.exports = server;
