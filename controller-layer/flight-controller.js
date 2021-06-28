@@ -53,7 +53,7 @@ router.get("/_id", verifyLoggedIn, async (request, response) => {
 router.get("/flightImages/:imageName", (request, response) => {
     try {
         const imageName = request.params.imageName;
-        const absolutePath = path.resolve(__dirname + "/../upload/flight-images/" + imageName);
+        const absolutePath = path.join(__dirname, "../upload/flight-images", imageName);
         response.sendFile(absolutePath);
     } catch (error) {
         response.status(500).send(errorsHelper.getError(error));

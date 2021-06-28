@@ -5,7 +5,7 @@
     "main": "app.js",
     "scripts": {
         "start": "node local-server.js",
-        "build": "netlify-lambda build src --output-path=publicweb"
+        "build": "netlify-lambda build src"
     },
     "author": "Roy Elmakies",
     "license": "ISC",

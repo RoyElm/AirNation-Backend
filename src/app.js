@@ -27,7 +27,7 @@ server.use("/.netlify/functions/app/api/flight", flightController);
 server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    response.sendFile(path.resolve(__dirname + '/../dist/index.html'))
+    response.sendFile(path.join(__dirname, '../dist/index.html'))
 });
 
 module.exports = server;
