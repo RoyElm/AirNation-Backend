@@ -1,20 +1,20 @@
 {
-  "name": "air_nation_backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "./node_modules/.bin/netlify-lamb",
-    "build": ""
-  },
-  "author": "Roy Elmakies",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-fileupload": "^1.2.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.9",
-    "uuid": "^8.3.2"
-  }
+    "name": "air_nation_backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app",
+        "build": "node app"
+    },
+    "author": "Roy Elmakies",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "express-fileupload": "^1.2.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.12.9",
+        "uuid": "^8.3.2"
+    }
 }
