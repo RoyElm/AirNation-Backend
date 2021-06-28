@@ -4,8 +4,8 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-        "start": "node app",
-        "build": "node app"
+        "start": "./node_modules/.bin/netlify-lambda serve src",
+        "build": "./node_modules/.bin/netlify-lambda build src"
     },
     "author": "Roy Elmakies",
     "license": "ISC",
@@ -14,7 +14,10 @@
         "express": "^4.17.1",
         "express-fileupload": "^1.2.1",
         "jsonwebtoken": "^8.5.1",
+        "mongodb-client-encryption": "^1.2.5",
         "mongoose": "^5.12.9",
+        "netlify-lambda": "^2.0.10",
+        "serverless-http": "^2.7.0",
         "uuid": "^8.3.2"
     }
 }
