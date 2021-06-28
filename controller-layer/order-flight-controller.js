@@ -7,9 +7,10 @@ const OrderFlightModel = require("../models/order-flight-model");
 const router = express.Router();
 
 //getting all ordered flights;
-router.get("/", verifyLoggedIn, async (request, response) => {
+router.get("/:userId", verifyLoggedIn, async (request, response) => {
     try {
-        const orderedFlights = await orderFlightLogic.getAllOrderFlightsByUserIdAsync();
+        const userId = request.params.userId;
+        const orderedFlights = await orderFlightLogic.getAllOrderFlightsByUserIdAsync(userId);
         response.json(orderedFlights);
     } catch (err) {
         response.status(500).send(errorsHelper.getError(err));

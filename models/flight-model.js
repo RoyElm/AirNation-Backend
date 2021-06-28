@@ -16,8 +16,6 @@ const FlightSchema = mongoose.Schema({
     duration: {
         type: String,
         required: [true, "Missing duration."],
-        min: [1, "duration must be minimum 1 hour."],
-        max: [30, "duration maximum is 30 hours."],
     },
     date: {
         type: Date,
@@ -26,7 +24,7 @@ const FlightSchema = mongoose.Schema({
     price: {
         type: Number,
         required: [true, "Missing price."],
-        min: [0, "Price cannot be negative."],
+        min: [1, "Price cannot be negative."],
         max: [100000, "Price can't exceed 100000."]
     },
     imageName: String,
