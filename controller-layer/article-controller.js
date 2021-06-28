@@ -32,7 +32,7 @@ router.get("/articleImages/:imageName", (request, response) => {
     try {
         const imageName = request.params.imageName;
         console.log("../upload/article-images/" + imageName);
-        const absolutePath = path.join(__dirname, "..", "upload/article-images", imageName);
+        const absolutePath = "../upload/article-images/" + imageName;
         response.sendFile(absolutePath);
     } catch (error) {
         response.status(500).send(errorsHelper.getError(error));
