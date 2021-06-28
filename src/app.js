@@ -11,7 +11,12 @@ const server = express();
 const serverless = require("serverless-http");
 const path = require("path");
 const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
+
 // // Enable sending an receiving cookies from the front:
+server.use(cookieParser());
+
+server.use(express.static(path.join(__dirname, "../dist")));
 
 // //Enabling cors to access from all ip address, allowing json as response and allowing file uploading.
 server.use(bodyParser.json());
