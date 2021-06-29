@@ -10,9 +10,8 @@ const fileUpload = require("express-fileupload");
 const server = express();
 const serverless = require("serverless-http");
 const path = require("path");
+const fs = require("fs");
 
-
-server.use(express.static(__dirname + "../dist"));
 
 // //Enabling cors to access from all ip address, allowing json as response and allowing file uploading.
 server.use(cors())
@@ -27,7 +26,7 @@ server.use("/.netlify/functions/app/api/flight", flightController);
 server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    const absolutePath = __dirname + "../dist/index.html";
+    const absolutePath = path.join(process.cwd(), 'dist/index.html');
     response.sendFile(absolutePath);
 });
 
