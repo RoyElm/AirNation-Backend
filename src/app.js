@@ -33,7 +33,7 @@ server.use("/.netlify/functions/app/api/flight", flightController);
 server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    const absolutePath = path.resolve(__dirname, "..", "dist/index.html");
+    const absolutePath = path.resolve(__dirname, "..", "dist\index.html");
     const exist = fs.existsSync(absolutePath);
     response.json({ absolutePath, exist });
 });
