@@ -4,6 +4,7 @@ const errorsHelper = require("../helpers/errors-helper");
 const articleLogic = require("../business-logic-layer/article-logic");
 const path = require("path");
 const router = express.Router();
+const fs = require("fs");
 
 
 //getting all articles;
@@ -31,7 +32,7 @@ router.get("/:_id", verifyLoggedIn, async (request, response) => {
 router.get("/articleImages/:imageName", (request, response) => {
     try {
         const imageName = request.params.imageName;
-        const absolutePath = path.join(process.cwd(), "upload/article-images", imageName)
+        const absolutePath = path.join(process.cwd(), "upload/article-images", imageName);
         response.sendFile(absolutePath);
     } catch (error) {
         response.status(500).send(errorsHelper.getError(error));

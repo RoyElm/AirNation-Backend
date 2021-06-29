@@ -10,8 +10,8 @@ const fileUpload = require("express-fileupload");
 const server = express();
 const serverless = require("serverless-http");
 const path = require("path");
-const fs = require("fs");
 
+server.use(express.static(path.join(__dirname, "./dist")));
 
 // //Enabling cors to access from all ip address, allowing json as response and allowing file uploading.
 server.use(cors())
