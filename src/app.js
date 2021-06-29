@@ -10,17 +10,11 @@ const fileUpload = require("express-fileupload");
 const server = express();
 const serverless = require("serverless-http");
 const path = require("path");
-const bodyParser = require('body-parser');
-const cookieParser = require("cookie-parser");
-const fs = require("fs");
 
-// // Enable sending an receiving cookies from the front:
-server.use(cookieParser());
 
-server.use(express.static("../dist"));
+server.use(express.static(__dirname + "../dist"));
 
 // //Enabling cors to access from all ip address, allowing json as response and allowing file uploading.
-server.use(bodyParser.json());
 server.use(cors())
 server.use(express.json());
 server.use(fileUpload());
@@ -33,7 +27,7 @@ server.use("/.netlify/functions/app/api/flight", flightController);
 server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    const absolutePath = "../dist/index.html";
+    const absolutePath = __dirname + "../dist/index.html";
     response.sendFile(absolutePath);
 });
 

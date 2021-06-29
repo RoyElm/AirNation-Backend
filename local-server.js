@@ -9,7 +9,6 @@ const cors = require("cors");
 const fileUpload = require("express-fileupload");
 const server = express();
 const path = require("path");
-// Enable sending an receiving cookies from the front:
 
 //Enabling cors to access from all ip address, allowing json as response and allowing file uploading.
 server.use(cors())
