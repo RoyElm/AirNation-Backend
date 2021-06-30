@@ -11,22 +11,23 @@ const server = express();
 const serverless = require("serverless-http");
 const path = require("path");
 
-server.use(express.static(path.join(__dirname, "./dist")));
+server.use(express.static(path.resolve("./dist")));
 
 // //Enabling cors to access from all ip address, allowing json as response and allowing file uploading.
 server.use(cors())
 server.use(express.json());
 server.use(fileUpload());
 
-// //ExpressJS Routes to controllers.
+// //ExpressJS Routes to controllers.;
 server.use("/.netlify/functions/app/api/auth", authController);
 server.use("/.netlify/functions/app/api/admin", adminController);
 server.use("/.netlify/functions/app/api/article", articleController);
 server.use("/.netlify/functions/app/api/flight", flightController);
 server.use("/.netlify/functions/app/api/order-flight", orderFlightController);
 
+
 server.use("*", (request, response) => {
-    const absolutePath = path.join(process.cwd(), 'dist/index.html');
+    const absolutePath = path.resolve('./dist/index.html');
     response.sendFile(absolutePath);
 });
 

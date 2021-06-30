@@ -15,7 +15,7 @@ function verifyLoggedIn(request, response, next) {
     if (!token) return response.status(401).send("You are not logged-in!");
 
     // Verify the token: 
-    jwt.verify(token, "AirNation", (err, payload) => { // payload.user
+    jwt.verify(token, 'expected key', (err, payload) => { // payload.user
         if (err && err.message === "jwt expired") {
             return response.status(403).send("Your login session has expired. Please login again.");
         }

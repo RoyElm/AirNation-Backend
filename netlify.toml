@@ -2,3 +2,8 @@
     command = "npm run build"
     functions = "functions"
 
+[build.environment]
+  connectionString = "mongodb+srv://AirNation:0546633054@cluster0.36rut.mongodb.net/AirNation?retryWrites=true&w=majority"
+
+[build.processing.images]
+  compress = true
