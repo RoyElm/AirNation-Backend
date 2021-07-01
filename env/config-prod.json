@@ -1,5 +1,5 @@
 {
     "mongodb": {
-        "connectionString": "mongodb+srv://AirNation:0546633054@cluster0.36rut.mongodb.net/AirNation?retryWrites=true&w=majority"
+        "connectionString": "env connection"
     }
 }

@@ -18,7 +18,7 @@ function verifyAdmin(request, response, next) {
     }
 
     // Verify the token: 
-    jwt.verify(token, "AirNation", (err, payload) => { // payload.user
+    jwt.verify(token, "desire key", (err, payload) => { // payload.user
 
         if (err && err.message === "jwt expired") {
             return response.status(403).send("Your login session has expired. Please login again.");
@@ -28,7 +28,7 @@ function verifyAdmin(request, response, next) {
             return response.status(401).send("You are not logged-in!");
         }
 
-        if (payload.user[0].role !== 'Admin_Role') {
+        if (payload.user[0].role !== 'desire role') {
             return response.status(403).send("You are not admin!");
         }
 
