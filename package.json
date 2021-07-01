@@ -4,8 +4,7 @@
     "description": "",
     "main": "src/app.js",
     "scripts": {
-        "start": "node local-server.js",
-        "build": "netlify-lambda build src"
+        "start": "node app"
     },
     "author": "Roy Elmakies",
     "license": "ISC",

@@ -17,6 +17,17 @@ router.get("/:userId", verifyLoggedIn, async (request, response) => {
     }
 })
 
+//delete ordered flight;
+router.delete("/:_id", verifyLoggedIn, async (request, response) => {
+    try {
+        const _id = request.params._id;
+        await orderFlightLogic.deleteOrderFlightBy_idAsync(_id);
+        response.sendStatus(204);
+    } catch (err) {
+        response.status(500).send(errorsHelper.getError(err));
+    }
+})
+
 //getting all ordered flights;
 router.post("/", verifyLoggedIn, async (request, response) => {
     try {
@@ -24,7 +35,8 @@ router.post("/", verifyLoggedIn, async (request, response) => {
         const error = orderFlight.validateSync();
         if (error) return response.status(400).send(error.message);
         const addedOrderFlight = await orderFlightLogic.saveOrderFlightAsync(orderFlight);
-        response.status(201).json(addedOrderFlight);
+        const fullOrderedFlight = await orderFlightLogic.getOrderFlightBy_idAsync(addedOrderFlight._id);
+        response.status(201).json(fullOrderedFlight);
     } catch (err) {
         response.status(500).send(errorsHelper.getError(err));
     }

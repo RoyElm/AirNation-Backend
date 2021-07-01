@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const key = 'expectedKey';
+const key = 'AirNation';
 
 function getNewToken(payload) {
     return jwt.sign(payload, key, { expiresIn: "90m" });

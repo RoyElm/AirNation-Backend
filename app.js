@@ -15,6 +15,8 @@ server.use(cors())
 server.use(express.json());
 server.use(fileUpload());
 
+server.use(express.static(path.join(__dirname, "./public")));
+
 //ExpressJS Routes to controllers.
 server.use("/api/auth", authController);
 server.use("/api/admin", adminController);
@@ -23,7 +25,9 @@ server.use("/api/flight", flightController);
 server.use("/api/order-flight", orderFlightController);
 
 server.use("*", (request, response) => {
-    response.sendFile(path.join(__dirname, ".index.html"))
+    response.sendFile(path.join(__dirname, "./public/index.html"))
 });
 
-server.listen(3001, () => console.log("Listening...."));
+const PORT = process.env.PORT || 3001;
+
+server.listen(PORT, () => console.log("Listening...."));
